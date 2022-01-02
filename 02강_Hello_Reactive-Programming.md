@@ -11,11 +11,13 @@ var b = 2
 a + b // 3
 
 a = 12 // 12
-```
+```  
 
-> 반응형 패러다임
+> 반응형 패러다임    
 
 ```swift 
+//Reactive Programming: a와 b의 값이 바뀔 때마다 다른 결과값을 출력    
+
 let a = BehaviorSubject(value: 1)
 let b = BehaviorSubject(value: 2)
 
