@@ -1,28 +1,27 @@
 # Observables and Observers
 
-## 1. Observable & Observer
-
-* Observable 
-* Observable Sequence
-* Sequence
-<br>=> Observable을 Observable Sequence, Sequence라고도 부른다. 
-
+## 1. Observable(= Observable Sequence) & Observer
 * `Observable` 은 Event를 전달한다.
-* `Observer` 는 `Observable` 를 감시하고 있다가 전달되는 Event를 처리한다. `Observable` 을 감시하고 있는 것을 `Subscribe` 라고 부른다.
-  * 그래서 `Observer`을 `Subscriber(구독자)`라고 부르기도 한다.
+* `Observer` 는 `Observable` 를 감시하고 있다가 전달되는 Event를 처리한다.  
+* `Observable` 을 감시하고 있는 것을 `Subscribe` 라고 부른다.
+* 그래서 `Observer`을 `Subscriber(구독자)`라고 부르기도 한다.
 
 ## 2. Observable이 전달하는 세 가지 이벤트 
-
 > 세 가지 이벤트: Next, Error, Completed
+* Observable에서 발생한 새로운 Event 는 Next 이벤트를 통해 전달된다. 
+* Event에 값이 포함되어 있다면 Next 이벤트와 함께 전달된다. 
+* 값이 Next 이벤트와 함께 전달되는 것을 RxSwift 에서는 **Emission(방출)** 이라고 부른다. 
+ * Observable의 Life Cycle 동안 Next 이벤트가 한번도 전달되지 않은 경우가 있고, 하나 이상 전달되는 경우도 있다. 
 
-* Observable에서 발생한 새로운 Event 는 Next 이벤트를 통해 전달된다. Event에 값이 포함되어 있다면 Next 이벤트와 함께 전달된다. 
-  * 값이 Next 이벤트와 함께 전달되는 것을 RxSwift 에서는 **Emission(방출)** 이라고 부른다. 
-  * Observable의 Life Cycle 동안 Next 이벤트가 한번도 전달되지 않은 경우가 있고, 하나 이상 전달되는 경우도 있다. 
+* Observable 에서 **Error가 발생하면** Error 이벤트가 전달되고 종료된다.
+* Observable이 **정상적으로 종료되면** Completed 이벤트가 전달된다.
+* Error, Completed 이벤트는 Observable 의 Life Cycle 에서 가장 마지막에 전달된다. 이후 Observable이 종료되고, **모든 리소스가 정리되기 때문에** 다른 이벤트는 전달되지 않는다. 
+* Error, Completed 이벤트는 Emission(Next) 라 부르지 않고 **Notification** 이라고 부른다. 
 
-* Observable 에서 Error가 발생하면 Error 이벤트가 전달되고 종료된다.
-* Observable이 정상적으로 종료되면 Completed 이벤트가 전달된다.
-* Error, Completed 이벤트는 Observable 의 Life Cycle 에서 가장 마지막에 전달된다. 이후 Observable이 종료되고, 모든 리소스가 정리되기 때문에 다른 이벤트는 전달되지 않는다. 
-* Error, Completed 이벤트는 Emission(Next) 라 부르지 않고 Notification 이라고 부른다. 
++) Marble Diagram = Observable과 연산자의 
+동작을 
+동작을 시각적으로 
+동작을 시각적으로 표현
 
 ## 3. Observable을 생성하는 2가지 방법
 
