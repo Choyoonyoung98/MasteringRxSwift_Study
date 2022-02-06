@@ -30,6 +30,7 @@ Observable<Int>.create { observer -> Disposable in
   observer.on(.next(0)) // observer 로 0 이 저장되어 있는 next 이벤트가 전달된다.
   observer.onNext(1) // observer 로 1 이 저장되어 있는 next 이벤트가 전달된다.
   observer.on(.completed) // observer 로 completed 이벤트가 전달되고 observable이 종료된다. 이후에 다른 이벤트를 전달할 순 없다.
+  observer.onCompleted()
   
   return Disposables.create() // Disposable 은 메모리 정리에 필요한 개체(Entity)다. Class 타입이 아닌 **Struct 타입**  
 }
