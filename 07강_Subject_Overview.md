@@ -17,13 +17,13 @@
 RxSwift는 4가지 종류의 subject 를 제공한다. 
 
 1. Publish Subject
-  * Subject로 전달되는 **새로운 Event**를 구독자로 전달한다.
+  * Subject로 전달되는 **새로운 Event**를 observer로 전달한다.
 2. Behavior Subject
   * 생성 시점에 시작 이벤트를 지정한다. 
-  * Subject 로 전달되는 이벤트 중에서 가장 마지막에 전달된 최신 이벤트를 저장해두었다가 새로운 구독자에게 최신 이벤트를 전달한다.
+  * Subject 로 전달되는 이벤트 중에서 **가장 마지막에 전달된 최신 이벤트**를 저장해두었다가 새로운 구독자에게 최신 이벤트를 전달한다.
 3. Replay Subject
   * 하나 이상의 최신 이벤트를 버퍼에 저장한다. 
-  * Observer가 구독을 시작하면 버퍼에 있는 모든 이벤트를 전달한다. 
+  * Observer가 구독을 시작하면 **버퍼에 있는 모든 이벤트**를 전달한다. 
 4. Async Subject
   * Subject로 Completed Event가 전달되는 시점에 마지막으로 전달된 Next 이벤트를 구독자로 전달한다. 
 
@@ -34,5 +34,5 @@ RxSwift 는 Subject를 Wrapping 하고 있는 두가지 Relay를 제공한다.
 1. Publish Relay: Publish Subject를 래핑한 것
 2. Behavior Relay: Behavior Subject를 래핑한 것
 
-Relay는 일반적인 Subject와 달리 Next 이벤트만 받고, **나머지 Completed 이벤트와 Error 이벤트는 받지 않는다.**
+Relay는 일반적인 Subject와 달리 **Next 이벤트만** 받고, **나머지 Completed 이벤트와 Error 이벤트는 받지 않는다.**
 <br>**주로 종료없이 계속 전달되는 이벤트 시퀀스를 처리할때 이용한다.** 
