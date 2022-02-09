@@ -26,7 +26,7 @@ Observable.just([1, 2, 3])
 
 ## of
 
-of 연산자는 파라미터로 가변 Element 매개변수를 받기 때문에 just와 달리 여러개의 값을 방출할 수 있다. element들이 하나씩 순서대로 방출된다.
+of 연산자는 파라미터로 가변 Element 매개변수를 받기 때문에 just와 달리 **여러개의 값을 방출** 할 수 있다. element들이 하나씩 순서대로 방출된다.
 
 ```swift
 let disposeBag = DisposeBag()
