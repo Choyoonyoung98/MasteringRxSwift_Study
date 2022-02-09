@@ -1,6 +1,6 @@
 # deferred
 
-* deferred 연산자를 사용하면 특정 조건에 맞게 observable 을  생성할 수 있다.
+* deferred 연산자를 사용하면 **특정 조건에 맞게 observable 을  생성** 할 수 있다.
 
 * Bool 타입에 toggle 이란 메소드가 있는지 처음 알았네. 신기하구만.
 
