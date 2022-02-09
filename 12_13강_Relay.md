@@ -21,9 +21,8 @@ publishRelay.accept(1)
 let behaviorRelay = BehaviorRelay<Int>(value: 1)
 behaviorRelay.accept(2)
 
-behaviorRelay.subscribe { 
-  print("2: \($0)") 
-}.disposed(by: bag)
+behaviorRelay.subscribe { print("2: \($0)") }
+  .disposed(by: bag)
 
 behaviorRelay.accept(3)
 print(behaviorRelay.value) // 저장된 value값을 리턴한다. 
@@ -33,4 +32,18 @@ print(behaviorRelay.value) // 저장된 value값을 리턴한다.
 // 2: next(2)
 // 2: next(3)
 // 3
+```
+
+```
+let replayRelay = ReplayRelay<Int>.create(bufferSize: 3)
+
+(1 ... 10).forEach { replayRelay.accept($0) }
+
+replayRelay.subscribe { print("3: \($0)") }
+  .disposed(by: bag)
+  
+//실행 결과
+// 3: next(8)
+// 3: next(9)
+// 3: next(10)
 ```
