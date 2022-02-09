@@ -55,7 +55,7 @@ Observable.of([1, 2], [3, 4], [5, 6])
 
 ## from
 
-from 연산자는 파라미터로 배열 타입을 받아 배열의 element를 순서대로 방출하는 연산자다. 
+from 연산자는 파라미터로 배열 타입을 받아 **배열의 element를 순서대로 방출**하는 연산자다. 
 
 ```swift
 let disposeBag = DisposeBag()
