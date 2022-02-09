@@ -3,7 +3,8 @@
 ## range
 
 range 연산자는 start의 정수 값부터 count만큼 차례대로 정수를 방출한다. 아래의 예시를 들면 1부터 10까지 방출된다.
-
+(정수로 입력하지 않을 시 컴파일 에러 발생)  
+-> start값부터 **1씩 증가**한 값을 방출
 ```swift
 let disposeBag = DisposeBag()
 
