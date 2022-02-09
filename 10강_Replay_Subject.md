@@ -66,4 +66,4 @@ replaySubject.subscribe { print("Observer 4 >>", $0) }
 // Observer 4 >> next(10)
 // Observer 4 >> completed
 ```
-=>  ReplaySubject가 completed 이벤트를 전달받아 종료되어도 그 이후에 구독한 전달자에게도 버퍼에 저장된 Next 이벤트를 전달하고 Completed 이벤트를 전달한다. 에러도 마찬가지다. 즉 종료 여부의 관계없이 버퍼에 저장된 Next이벤트를 옵저버에게 전달한다.
+=>  ReplaySubject가 completed 이벤트를 전달받아 종료되어도 그 이후에 구독한 전달자에게도 버퍼에 저장된 Next 이벤트를 전달하고 Completed 이벤트를 전달한다. 에러도 마찬가지다. **즉 종료 여부의 관계없이 버퍼에 저장된 Next이벤트를 옵저버에게 전달한다.**  
