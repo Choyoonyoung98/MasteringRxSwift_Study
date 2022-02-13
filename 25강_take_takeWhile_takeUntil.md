@@ -2,7 +2,7 @@
 
 ## take
 
-정수를 파라미터로 받아서 해당 숫자 count까지만 요소를 처음부터 방출한다. 이후부터는 방출하지 않는다. 단 completed, error 이벤트는 막지 않는다.
+정수를 파라미터로 받아서 **해당 숫자 count까지만 요소를 처음부터 방출**한다. 이후부터는 방출하지 않는다. 단 completed, error 이벤트는 막지 않는다.
 
 ```swift
 let disposeBag = DisposeBag()
@@ -24,24 +24,29 @@ Observable.from(numbers)
 
 ## take(while:)
 
-predicate 에서 true를 반환할 때까지만 요소를 방출한다. false를 반환한 순간부터 true이든 false 이든 요소를 방출하지 않는다. 
+**predicate 에서 true를 반환할 때까지만 요소를 방출한다.** false를 반환한 순간부터 true이든 false 이든 요소를 방출하지 않는다. 
 
-* 참고: skipWhile은 어떨까? predicate 에서 true를 반환할때 까지만 요소를 무시한다. false를 반환한 순간부터 true이든 false 이든 요소를 방출한다
-  * skipWhile, takeWhile 둘 다 이름 참 잘 지었다.
+> (참고) skipWhile은 어떨까? **predicate 에서 true를 반환할때 까지만 요소를 무시한다.** false를 반환한 순간부터 true이든 false 이든 요소를 방출한다
 
 ```swift
 let disposeBag = DisposeBag()
 let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
 Observable.from(numbers)
-  .take(while: { [1, 2, 4, 6, 7].contains($0) })
+  .take(while: { !$0.isMultiple(of: 2)}, behavior: .inclusive)
   .subscribe({ print($0) })
   .disposed(by: disposeBag)
 
 // 실행 결과 
 // next(1)
-// next(2)
+// next(2) //포함
 // completed
+```
+
+```
+public func take(while predicate: @escaping (Element throws -> Bool, behavior: TakeBehavior = .exclusive) -> Observable<Element> {
+  take(until: { try !predicate($0) }, behavior: behavior)
+}
 ```
 
 ## take(until:)
