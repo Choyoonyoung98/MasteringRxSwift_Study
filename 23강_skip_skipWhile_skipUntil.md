@@ -99,5 +99,5 @@ subject.onNext(5)
 // next(4)
 // next(5)
 ```
-=> trigger가 next 이벤트를 받기 전까지 subject 이 전달하는 이벤트는 무시된다. 
-<br> trigger가 next 이벤트를 받은 후부터 subject가 전달하는 이벤트가 전달된다.  
+=> **trigger가 next 이벤트를 받기 전까지** subject 이 전달하는 이벤트는 **무시** 된다. 
+<br> **trigger가 next 이벤트를 받은 후부터** subject가 **전달**하는 이벤트가 전달된다.  
