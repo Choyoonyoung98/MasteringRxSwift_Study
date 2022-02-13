@@ -23,8 +23,8 @@ Observable.from(fruits)
 
 > ignoreElements를 적용한 경우 
 
-=> 아래 결과처럼 ignoreElements를 사용하면 Observable이 방출하는 next 이벤트를 필터링한다. 
-
+=> 아래 결과처럼 ignoreElements를 사용하면 Observable이 방출하는 next 이벤트를 필터링한다.   
+=> 모든 next 이벤트 전달은 무시하고 종료 이벤트만 전달한다. 즉, 시퀀스가 종료되는 시점을 알 수 있다.
 ```swift
 let disposeBag = DisposeBag()
 let fruits = ["🍏", "🍎", "🍋", "🍓", "🍇"]
