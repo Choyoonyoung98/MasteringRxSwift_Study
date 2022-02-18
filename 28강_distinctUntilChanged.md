@@ -5,11 +5,25 @@ public func distinctUntilChanged() -> Observable<Element> {
     self.distinctUntilChanged({ $0 }, comparer: { ($0 == $1) })
 }
 ```
-=> Observable이 방출한 이벤트를 순서대로 비교한 다음에 이전 이벤트와 동일하다면 방출하지 않는다. 
+```swift
+let numbers = [1, 1, 2, 2, 2, 3, 1, 1, 1]
+Observable.from(numbers)
+    .distinctUntilChanged()
+    .subscribe{ print($0) }
+    .disposed(by: disposeBag)
+    
+//next(1)
+//next(2)
+//next(3)
+//next(1)
+//completed
+```
+=> Observable이 방출한 이벤트를 순서대로 비교한 다음에 이전 이벤트와 동일하다면 방출하지 않는다.   
+=> 연속적이지 않다면, 동일한 값이 나오더라도 방출한다.  
 
 ```swift
 public func distinctUntilChanged<Key: Equatable>(_ keySelector: @escaping (Element) throws -> Key) -> Observable<Element> {
-    self.distinctUntilChanged(keySelector, comparer: { $0 == $1 })
+    self.distinctUntilChanged(keySelector, comparer: { $0 == $1 }) //비교연사자를 통해 포함된 값을 비교하는 형식
 }
 ```
 => keySelector는 요소중에 comparasion key가 되는 것을 반환하는 클로저이다. 아래 예시를 보면 쉽게 알 수 있다.
@@ -87,3 +101,4 @@ Observable.from(persons)
 // next(Person(name: "Tim", age: 56))
 // completed
 ```
+=> 나이를 기준으로 `distinctUntilChanged`
